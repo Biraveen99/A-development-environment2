@@ -7,7 +7,7 @@ terraform {
 }
 
 provider "openstack" {
-        cloud = "openstack" # defined in ~C:/Users/Tommy/Desktop/.config/openstack/clouds.yml
+  cloud = "openstack" # defined in /Users/biraveennedunchelian/.config/openstack/clouds.yaml
 }
 
 resource "openstack_compute_instance_v2" "dev_server" {
@@ -28,6 +28,12 @@ resource "openstack_compute_instance_v2" "dev_server" {
     private_key = file("~/.ssh/id_rsa")
     host        = self.access_ip_v4
   }
+  
+    provisioner "file" { 
+      ##send_playbook##
+     source      = "/Users/biraveennedunchelian/Desktop/info ops/project1/Playbooks/users.yml"
+     destination = "/home/ubuntu/setup_apache_and_user.yml"
+    }
 
   provisioner "remote-exec" {
     inline = [
