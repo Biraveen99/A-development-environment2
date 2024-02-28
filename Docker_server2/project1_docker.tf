@@ -14,7 +14,7 @@ resource "openstack_compute_instance_v2" "docker_server" {
   name              = "DockerServer"
   image_name        = "Ubuntu-22.04-LTS"
   flavor_name       = "css.2c4r.10g"
-  key_pair          = "Bira_mac_key"
+  key_pair          = "masterKey"
   security_groups   = ["default"]
 
   network {
