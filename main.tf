@@ -1,5 +1,5 @@
 module "Development_server_emacs_jed_git" {
-    source = "./Development_server_emacs_jed_git/DevelopmentServerproject1.tf" #2stk_idenne
+    source = "./Development_server_emacs_jed_git" #2stk_idenne
   }
 
 module "Docker_server2" {
@@ -8,10 +8,7 @@ module "Docker_server2" {
 
 
 module "Storage_server_GlusterFS1" {
-    source = "./Storage_server_GlusterFS/Gluster1/Gluster1project1.tf"
+    source = "./Storage_server_GlusterFS"
   }
 
-module "Storage_server_GlusterFS1" {
-    source = "./Storage_server_GlusterFS/Gluster2/Gluster2project2.tf"
-  }
 
