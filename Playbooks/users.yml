@@ -1,7 +1,6 @@
 ---
 - name: Setup User Accounts and Groups
-  hosts: localhost
-  connection: local
+  hosts: all
   become: true
   vars:
     users:
