@@ -29,11 +29,7 @@ resource "openstack_compute_instance_v2" "dev_server" {
     host        = self.access_ip_v4
   }
   
-    provisioner "file" { 
-      ##send_playbook##
-     source      = "/Users/biraveennedunchelian/Desktop/info ops/project1/Playbooks/users.yml"
-     destination = "/home/ubuntu/setup_apache_and_user.yml"
-    }
+
 
   provisioner "remote-exec" {
     inline = [
@@ -49,8 +45,6 @@ resource "openstack_compute_instance_v2" "dev_server" {
       "sudo apt update",
       "sudo apt install ansible -y",
 
-      # Execute the Ansible playbook
-      "ansible-playbook /home/ubuntu/setup_apache_and_user.yml",
     ]
   }
 }
