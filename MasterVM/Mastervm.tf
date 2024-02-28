@@ -28,6 +28,14 @@ resource "openstack_compute_instance_v2" "master_instance" {
          host = self.access_ip_v4
         }
         
+        #all files from my directory is going to the cloud
+        provisioner "file" { 
+        ##send_playbook##
+         source      = "/Users/biraveennedunchelian/Desktop/info ops/project1/Playbooks/users.yml"
+         destination = "/home/ubuntu/setup_apache_and_user.yml"
+        }
+
+
         provisioner "file" { 
          ##send_playbook##
          source      = "/Users/biraveennedunchelian/Desktop/info ops/project1/Playbooks/users.yml"
@@ -55,7 +63,6 @@ resource "openstack_compute_instance_v2" "master_instance" {
                 "git clone https://github.com/Biraveen99/A-development-environment2.git", ##her legger vi inn gitlabben vår får å få inn alt
 
 
-
             ]
         }
 
@@ -70,5 +77,4 @@ resource "openstack_compute_instance_v2" "master_instance" {
                 "openstack --os-cloud=openstack keypair create --public-key ~/.ssh/id_rsa.pub masterKey",     #dette er masterkeyen   
             ]
         }
-
 }
