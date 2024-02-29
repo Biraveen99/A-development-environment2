@@ -41,3 +41,7 @@ resource "openstack_compute_instance_v2" "dev_server" {
     ]
   }
 }
+
+output "development_server_ips" {
+  value = openstack_compute_instance_v2.dev_server.*.access_ip_v4
+}

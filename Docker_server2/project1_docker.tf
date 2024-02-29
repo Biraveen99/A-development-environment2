@@ -41,3 +41,8 @@ resource "openstack_compute_instance_v2" "docker_server" {
   }
 
 }
+
+output "docker_server_ip" {
+  value = openstack_compute_instance_v2.docker_server.network.0.fixed_ip_v4
+}
+

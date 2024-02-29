@@ -43,3 +43,8 @@ resource "openstack_compute_instance_v2" "glusterfs_server_1" {
     ]
   }
 }
+
+
+output "glusterfs_server_ips" {
+  value = openstack_compute_instance_v2.glusterfs_server_1.*.access_ip_v4
+}
