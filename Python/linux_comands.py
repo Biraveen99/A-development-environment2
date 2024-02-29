@@ -80,7 +80,7 @@ def run_playbook():
     playbook_directory = "../ansible_playbook"
     os.chdir(playbook_directory)  
 
-    result = subprocess.run("ansible-playbook -i /etc/ansible/hosts users.ansible.yml", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    result = subprocess.run("ansible-playbook -i /etc/ansible/hosts users.yml", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
     if result.returncode == 0:
         print("Playbook applied")
