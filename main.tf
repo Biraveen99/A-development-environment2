@@ -10,5 +10,3 @@ module "Docker_server2" {
 module "Storage_server_GlusterFS1" {
     source = "./Storage_server_GlusterFS"
   }
-
-
