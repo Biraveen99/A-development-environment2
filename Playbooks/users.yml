@@ -1,0 +1,40 @@
+---
+- name: Setup User Accounts and Groups
+  hosts: all
+  become: true
+  vars:
+    users:
+      - name: bob
+      - name: janet
+      - name: alice
+      - name: tim
+    developer_group: developers
+    sudoers:
+      - bob
+      - janet
+      - alice
+      - tim
+
+  tasks:
+    - name: Create developer group
+      group:
+        name: "{{ developer_group }}"
+        state: present
+
+    - name: Create user accounts
+      user:
+        name: "{{ item.name }}"
+        state: present
+        create_home: true
+        groups: "{{ developer_group if item.name in ['janet','tim'] else omit }}"
+        append: yes
+      loop: "{{ users }}"
+
+    - name: Configure sudoers for passwordless sudo
+      lineinfile:
+        path: /etc/sudoers.d/{{ item }}
+        line: "{{ item }} ALL=(ALL) NOPASSWD: ALL"
+        state: present
+        create: true
+        validate: "/usr/sbin/visudo -cf %s"
+      loop: "{{ sudoers }}"
