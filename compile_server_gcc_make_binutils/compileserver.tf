@@ -29,16 +29,20 @@ resource "openstack_compute_instance_v2" "Compile_server" {
     host        = self.access_ip_v4
   }
   
-
+  
 
     provisioner "remote-exec" {
-    inline = [
+        inline = [
         "sleep 20",
-        "sudo apt update",
-        "sudo apt install -y gcc make binutils jed",
-        "sudo apt install -y emacs git",
-    ]
+        "sudo apt-get update",
+        "sudo DEBIAN_FRONTEND=noninteractive apt-get install -y gcc", 
+        "if [ -f /var/run/reboot-required ]; then sudo shutdown -r +1 'Scheduled reboot after GCC installation'; fi",
+        "sudo apt install -y make",
+        "sudo apt install -y binutils",
+
+        ]
     }
+
 
 }
 
