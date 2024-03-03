@@ -31,15 +31,15 @@ resource "openstack_compute_instance_v2" "Compile_server" {
   
 
 
-  provisioner "remote-exec" {
+    provisioner "remote-exec" {
     inline = [
-      "sleep 20",
-      "sudo apt update",
-      "sudo apt install -y jed", 
-      "sudo apt install gcc make binutils -y",
-      "sudo apt install emacs jed git -y",
+        "sleep 20",
+        "sudo apt update",
+        "sudo apt install -y gcc make binutils jed",
+        "sudo apt install -y emacs git",
     ]
-  }
+    }
+
 }
 
 output "compile_server_server_ips" {
