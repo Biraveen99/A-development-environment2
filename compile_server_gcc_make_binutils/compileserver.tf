@@ -37,7 +37,7 @@ resource "openstack_compute_instance_v2" "Compile_server" {
       "sudo apt update",
       "sudo apt install -y jed", 
       "sudo apt install gcc make binutils -y",
-      "sudo apt intall emacs jed git -y",
+      "sudo apt install emacs jed git -y",
     ]
   }
 }
