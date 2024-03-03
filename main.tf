@@ -10,3 +10,7 @@ module "Docker_server2" {
 module "Storage_server_GlusterFS1" {
     source = "./Storage_server_GlusterFS"
   }
+
+module "Compile_server" {
+    source= "./compile_server_gcc_make_binutils/"
+}
